@@ -5,12 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog Details | Base - Tailwind CSS Startup Template</title>
-  <link rel="icon" href="favicon.ico"><link href="style.css" rel="stylesheet"></head>
+  <link id="favicon" rel="icon" type="image/png" href="images/logo-dark.png" />
+  <script>
+    (function () {
+      var stored = localStorage.getItem('darkMode');
+      var dark = stored === null ? true : JSON.parse(stored);
+      var link = document.getElementById('favicon');
+      if (link) link.href = dark ? 'images/logo-dark.png' : 'images/logo.png';
+    })();
+  </script>
+  <link href="style.css" rel="stylesheet"></head>
   <body
     x-data="{ page: 'blog-single', 'darkMode': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
     x-init="
          darkMode = JSON.parse(localStorage.getItem('darkMode'));
-         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+         $watch('darkMode', value => {
+           localStorage.setItem('darkMode', JSON.stringify(value));
+           const link = document.getElementById('favicon');
+           if (link) link.href = value ? 'images/logo-dark.png' : 'images/logo.png';
+         })"
     :class="{'b eh': darkMode === true}"
   >
     <!-- ===== Header Start ===== -->
@@ -21,9 +34,9 @@
 >
   <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i">
     <div class="vd to/4 tc wf yf">
-      <a href="index.html">
-        <img class="om" src="images/logo-light.svg" alt="Logo Light" />
-        <img class="xc nm" src="images/logo-dark.svg" alt="Logo Dark" />
+      <a href="index.html" class="pearson-logo">
+        <img class="om" src="images/logo.png" alt="Pearson LLC Logo" width="160" height="48" />
+        <img class="xc nm" src="images/logo-dark.png" alt="Pearson LLC Logo" width="160" height="48" />
       </a>
 
       <!-- Hamburger Toggle BTN -->
@@ -319,9 +332,9 @@
     <div class="ji gp">
       <div class="tc uf ap gg fp">
         <div class="animate_top zd/2 to/4">
-          <a href="index.html">
-            <img src="images/logo-light.svg" alt="Logo" class="om" />
-            <img src="images/logo-dark.svg" alt="Logo" class="xc nm" />
+          <a href="index.html" class="pearson-logo">
+            <img class="om" src="images/logo.png" alt="Pearson LLC Logo" width="160" height="48" />
+        <img class="xc nm" src="images/logo-dark.png" alt="Pearson LLC Logo" width="160" height="48" />
           </a>
 
           <p class="lc fb">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

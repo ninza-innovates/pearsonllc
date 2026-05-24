@@ -2585,3 +2585,35 @@ h1,  h2,  h3,  h4,  h5,  h6{
   }
 }
 
+/* Pearson LLC logo — fixed size (overrides global img { height: auto }) */
+.pearson-logo {
+  display: inline-block;
+  position: relative;
+  flex-shrink: 0;
+  width: 160px;
+  height: 48px;
+}
+.pearson-logo img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 160px;
+  height: 48px;
+  max-width: 160px;
+  max-height: 48px;
+  object-fit: contain;
+  object-position: left center;
+}
+.pearson-logo img.om {
+  display: block;
+}
+.pearson-logo img.xc.nm {
+  display: none;
+}
+.b .pearson-logo img.om {
+  display: none;
+}
+.b .pearson-logo img.xc.nm {
+  display: block;
+}
+

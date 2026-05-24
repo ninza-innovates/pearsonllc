@@ -5,7 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pearson LLC - Connecting Americans with Global Tech Talent</title>
-  <link rel="icon" href="favicon.ico"><link href="style.css" rel="stylesheet">
+  <link id="favicon" rel="icon" type="image/png" href="images/title-logo-dark.png" />
+  <script>
+    (function () {
+      var stored = localStorage.getItem('darkMode');
+      var dark = stored === null ? true : JSON.parse(stored);
+      var link = document.getElementById('favicon');
+      if (link) link.href = dark ? 'images/title-logo-dark.png' : 'images/title-logo.png';
+    })();
+  </script>
+  <link href="style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
   <style>
     .iti { width: 100%; }
@@ -16,26 +25,6 @@
     .iti__divider { border-bottom-color: #334155; }
     .iti__arrow { border-top-color: #e2e8f0; }
     .iti__arrow--up { border-bottom-color: #e2e8f0; }
-
-    /* Pearson logo - fixed size, overrides global img { height: auto } */
-    .pearson-logo {
-      display: inline-block;
-      position: relative;
-      width: 160px;
-      height: 48px;
-      flex-shrink: 0;
-    }
-    .pearson-logo img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 160px !important;
-      height: 48px !important;
-      max-width: 160px !important;
-      max-height: 48px !important;
-      object-fit: contain !important;
-      object-position: left center;
-    }
 
     /* Hero — two-column layout (no overlap at any width) */
     .hero-layout {
@@ -268,7 +257,11 @@
     x-data="{ page: 'home', 'darkMode': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
     x-init="
          darkMode = JSON.parse(localStorage.getItem('darkMode'));
-         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+         $watch('darkMode', value => {
+           localStorage.setItem('darkMode', JSON.stringify(value));
+           const link = document.getElementById('favicon');
+           if (link) link.href = value ? 'images/title-logo-dark.png' : 'images/title-logo.png';
+         })"
     :class="{'b eh': darkMode === true}"
   >
     <!-- ===== Header Start ===== -->
@@ -280,8 +273,8 @@
   <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i">
     <div class="vd to/4 tc wf yf">
       <a href="index.html" class="pearson-logo">
-        <img class="om" src="images/dark.png" alt="Pearson LLC Logo" />
-        <img class="xc nm" src="images/light.png" alt="Pearson LLC Logo" />
+        <img class="om" src="images/logo.png" alt="Pearson LLC Logo" width="160" height="48" />
+        <img class="xc nm" src="images/logo-dark.png" alt="Pearson LLC Logo" width="160" height="48" />
       </a>
 
       <!-- Hamburger Toggle BTN -->
@@ -1290,8 +1283,8 @@
       <div class="tc uf ap gg fp">
         <div class="animate_top zd/2 to/4">
           <a href="index.html" class="pearson-logo">
-            <img src="images/dark.png" alt="Pearson LLC Logo" class="om" />
-            <img src="images/light.png" alt="Pearson LLC Logo" class="xc nm" />
+            <img class="om" src="images/logo.png" alt="Pearson LLC Logo" width="160" height="48" />
+            <img class="xc nm" src="images/logo-dark.png" alt="Pearson LLC Logo" width="160" height="48" />
           </a>
 
           <p class="lc fb">Creating win-win opportunities for US clients and international developers since 2026.</p>
