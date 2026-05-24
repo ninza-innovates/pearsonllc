@@ -167,6 +167,101 @@
         display: block;
       }
     }
+
+    /* About — story image (03.png) */
+    .about-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .about-visual-wrap {
+      min-width: 0;
+      width: 100%;
+      display: block;
+      align-self: stretch;
+    }
+    .about-visual {
+      position: relative;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      background: linear-gradient(145deg, #e2e8f0 0%, #f8fafc 100%);
+      box-shadow:
+        0 4px 6px -1px rgba(15, 23, 42, 0.06),
+        0 24px 48px -12px rgba(15, 23, 42, 0.2);
+      outline: 1px solid rgba(148, 163, 184, 0.22);
+      outline-offset: -1px;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .about-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      z-index: 1;
+    }
+    .about-visual::after {
+      content: "";
+      position: absolute;
+      bottom: -0.75rem;
+      right: -0.75rem;
+      width: 55%;
+      height: 55%;
+      border-radius: 1rem;
+      background: rgba(78, 107, 255, 0.18);
+      z-index: -1;
+      filter: blur(12px);
+    }
+    .about-visual img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+    .b .about-visual {
+      background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+      box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.25),
+        0 28px 56px -12px rgba(0, 0, 0, 0.5);
+      outline-color: rgba(71, 85, 105, 0.45);
+    }
+    .b .about-visual::after {
+      background: rgba(78, 107, 255, 0.28);
+    }
+    @media (min-width: 768px) {
+      .about-row {
+        flex-direction: row;
+        align-items: center;
+      }
+      .about-visual-wrap {
+        display: flex;
+        justify-content: flex-start;
+      }
+      .about-visual {
+        width: 100%;
+        max-width: min(100%, 42rem);
+        margin: 0;
+      }
+      .about-visual:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          0 8px 12px -2px rgba(15, 23, 42, 0.08),
+          0 32px 56px -12px rgba(15, 23, 42, 0.24);
+      }
+      .b .about-visual:hover {
+        box-shadow:
+          0 8px 12px -2px rgba(0, 0, 0, 0.3),
+          0 32px 56px -12px rgba(0, 0, 0, 0.55);
+      }
+    }
+    @media (min-width: 1280px) {
+      .about-visual {
+        border-radius: 1.375rem;
+      }
+    }
   </style>
 </head>
   <body
@@ -320,34 +415,33 @@
       <!-- ===== About Start ===== -->
       <section class="ji gp uq 2xl:ud-py-35 pg">
         <div class="bb ze ki xn wq">
-          <div class="tc wf gg qq">
-            <!-- About Images -->
-            <div class="animate_left xc gn gg jn/2 i">
-              <div>
-                <img src="images/shape-05.svg" alt="Shape" class="h -ud-left-5 x" />
-                <img src="images/about-01.png" alt="About" class="ib" />
-                <img src="images/about-04.png" alt="About" />
-              </div>
-              <div>
-                <img src="images/shape-06.svg" alt="Shape" />
-                <img src="images/about-03.png" alt="About" class="ob gb" />
-                <img src="images/shape-07.svg" alt="Shape" class="bb" />
-              </div>
+          <div class="tc wf gg qq about-row">
+            <!-- About Visual -->
+            <div class="animate_left about-visual-wrap jn/2">
+              <figure class="about-visual">
+                <img
+                  src="images/03.png"
+                  alt="Pearson LLC partnership story: US clients and LATAM developers building success together"
+                  width="768"
+                  height="768"
+                  loading="lazy"
+                />
+              </figure>
             </div>
 
             <!-- About Content -->
-            <div class="animate_right jn/2">
+            <div class="animate_right jn/2 about-content">
               <h4 class="ek yj mk gb">Why Choose Pearson LLC</h4>
               <h2 class="fk vj zp pr kk wm qb">We Believe Everyone Deserves a Fair Chance to Succeed</h2>
               <p class="uo">Too many hardworking Americans struggle to afford the tech they need to grow. And too many talented developers overseas lack opportunities. We bridge this gap - connecting US clients with skilled international developers at fair prices that benefit both sides.</p>
 
-              <a href="https://www.youtube.com/watch?v=xcJtL7QggTI" data-fslightbox class="vc wf hg mb">
+              <!-- <a href="https://www.youtube.com/watch?v=xcJtL7QggTI" data-fslightbox class="vc wf hg mb">
                 <span class="tc wf xf be dd rg i gh ua">
                   <span class="nf h vc yc vd rg gh qk -ud-z-1"></span>
                   <img src="images/icon-play.svg" alt="Play" />
                 </span>
                 <span class="kk">SEE HOW WE WORK</span>
-              </a>
+              </a> -->
             </div>
           </div>
         </div>
@@ -385,9 +479,9 @@
             <!-- Team Item -->
             <div class="animate_top rj">
               <div class="c i pg z-1">
-                <img class="vd" src="images/team-01.png" alt="Team" />
+                <img class="vd" src="images/team-001.png" alt="Team" />
 
-                <div class="ef im nl il">
+                <!-- <div class="ef im nl il">
                   <span class="h -ud-left-5 -ud-bottom-21 rc de gd gh if wa"></span>
                   <span class="h s p rc vd hd mh va"></span>
                   <div class="h s p vd ij jj xa">
@@ -415,7 +509,7 @@
                       </li>
                     </ul>
                   </div>
-                </div>
+                </div> -->
               </div>
 
               <h4 class="yj go kk wm ob zb">For US Clients</h4>
@@ -425,9 +519,9 @@
             <!-- Team Item -->
             <div class="animate_top rj">
               <div class="c i pg z-1">
-                <img class="vd" src="images/team-02.png" alt="Team" />
+                <img class="vd" src="images/team-002.png" alt="Team" />
 
-                <div class="ef im nl il">
+                <!-- <div class="ef im nl il">
                   <span class="h -ud-left-5 -ud-bottom-21 rc de gd gh if wa"></span>
                   <span class="h s p rc vd hd mh va"></span>
                   <div class="h s p vd ij jj xa">
@@ -455,7 +549,7 @@
                       </li>
                     </ul>
                   </div>
-                </div>
+                </div> -->
               </div>
 
               <h4 class="yj go kk wm ob zb">For Developers</h4>
@@ -465,9 +559,9 @@
             <!-- Team Item -->
             <div class="animate_top rj">
               <div class="c i pg z-1">
-                <img class="vd" src="images/team-03.png" alt="Team" />
+                <img class="vd" src="images/team-003.png" alt="Team" />
 
-                <div class="ef im nl il">
+                <!-- <div class="ef im nl il">
                   <span class="h -ud-left-5 -ud-bottom-21 rc de gd gh if wa"></span>
                   <span class="h s p rc vd hd mh va"></span>
                   <div class="h s p vd ij jj xa">
@@ -495,7 +589,7 @@
                       </li>
                     </ul>
                   </div>
-                </div>
+                </div> -->
               </div>
 
               <h4 class="yj go kk wm ob zb">Win-Win Results</h4>
